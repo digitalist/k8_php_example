@@ -41,7 +41,7 @@ function get_expiring_subscriptions($dbc, $bucket, $offset, $limit){
     $query = "select e.email 
     from  emails e 
     where 
-    e.checked = 0 and e.valid=1 and e.oid % 16 = ".$bucket .
+    e.checked = 1 and e.valid=1 and e.oid % 16 = ".$bucket .
     " and  validts <= NOW() + INTERVAL 3 DAY
       and validts >= NOW() /* ignore invalid subscriptions */
     order by u.oid ".
